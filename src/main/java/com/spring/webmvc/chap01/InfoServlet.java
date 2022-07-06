@@ -16,20 +16,23 @@ import java.io.PrintWriter;
 @WebServlet("/info")
 public class InfoServlet extends HttpServlet {
 
+
+
     public InfoServlet() {
-        System.out.println("InfoServlet constructor call!");
+        System.out.println("\n\n\n\nInfoServlet constructor call!\n\n\n\n");
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        System.out.println("info request!!");
-//
+        System.out.println("hello info servlet!!");
+
 //        System.out.println("connected IP address: " + req.getRemoteAddr());
 //        System.out.println("hobby: " + req.getParameter("hobby"));
 
         // 요청 정보 받기
         double height = Double.parseDouble(req.getParameter("height"));
         double weight = Double.parseDouble(req.getParameter("weight"));
+
 
         // 응답 정보 생성하기
         resp.setContentType("text/html");
@@ -40,7 +43,7 @@ public class InfoServlet extends HttpServlet {
         w.write("<html>");
         w.write("<body>");
         double bmi = calcBMI(height, weight);
-        w.write("  <h1>당신의 체질량지수는 " + bmi + "입니다!?</h1>");
+        w.write("  <h1>님의 체질량지수는 " + bmi + "입니다!?</h1>");
 
         if (bmi > 25.0) {
             w.write("<h2>과체중입니다.</h2>");
@@ -53,6 +56,11 @@ public class InfoServlet extends HttpServlet {
         w.write("</body>");
         w.write("</html>");
 
+    }
+
+    @Override
+    public void destroy() {
+        System.out.println("\n\n\nservlet disappeared!!\n\n\n");
     }
 
     private double calcBMI(double cm, double kg) {
