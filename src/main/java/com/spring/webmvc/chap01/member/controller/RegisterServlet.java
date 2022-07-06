@@ -20,8 +20,8 @@ public class RegisterServlet extends HttpServlet {
         // 회원가입 폼을 그려야함 (SSR)
         PrintWriter w = resp.getWriter();
 
-        resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html");
 
         w.write("<!DOCTYPE html>\n");
         w.write("<html lang='ko'>\n");
@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
 
         w.write("</head>\n");
         w.write("<body>\n");
-        w.write("<form action='/reg-process' method='get'>\n");
+        w.write("<form action='/reg-process' method='post'>\n");
         w.write("<label># account: <input type='text' name='account'></label>\n");
         w.write("<label># password: <input type='password' name='password'></label>\n");
         w.write("<label># username: <input type='text' name='userName'></label>\n");
