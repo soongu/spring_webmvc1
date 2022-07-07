@@ -1,6 +1,6 @@
-package com.spring.webmvc.chap01.member.repository;
+package com.spring.webmvc.member.repository;
 
-import com.spring.webmvc.chap01.member.model.Member;
+import com.spring.webmvc.member.model.Member;
 
 import java.util.List;
 

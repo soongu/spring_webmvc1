@@ -1,4 +1,4 @@
-package com.spring.webmvc.chap01.member.controller;
+package com.spring.webmvc.chap01.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

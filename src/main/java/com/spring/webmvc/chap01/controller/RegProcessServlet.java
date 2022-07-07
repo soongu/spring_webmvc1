@@ -1,8 +1,8 @@
-package com.spring.webmvc.chap01.member.controller;
+package com.spring.webmvc.chap01.controller;
 
-import com.spring.webmvc.chap01.member.model.Member;
-import com.spring.webmvc.chap01.member.repository.MemberRepository;
-import com.spring.webmvc.chap01.member.repository.MemoryMemberRepo;
+import com.spring.webmvc.member.model.Member;
+import com.spring.webmvc.member.repository.MemberRepository;
+import com.spring.webmvc.member.repository.MemoryMemberRepo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

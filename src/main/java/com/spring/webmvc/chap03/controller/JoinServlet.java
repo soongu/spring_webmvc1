@@ -1,4 +1,4 @@
-package com.spring.webmvc.chap03;
+package com.spring.webmvc.chap03.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

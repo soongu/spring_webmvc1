@@ -1,4 +1,4 @@
-package com.spring.webmvc.chap01.member.model;
+package com.spring.webmvc.member.model;
 
 import lombok.Getter;
 import lombok.Setter;
