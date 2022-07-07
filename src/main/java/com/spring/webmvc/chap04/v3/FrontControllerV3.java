@@ -52,7 +52,6 @@ public class FrontControllerV3 extends HttpServlet {
         // key: 파라미터의 key, value: 파라미터의 value
         Map<String, String> paramMap = createParamMap(req);
 
-
         View view = controller.process(paramMap);
         if (view != null) view.render(req, resp);
 
