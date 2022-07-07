@@ -22,7 +22,7 @@ public class ShowServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Member> members = repository.findAll();
-        System.out.println(members);
+        //System.out.println(members);
 
         // Model : Controller와 View 사이의 데이터(리스트)를 운반하는 수단 객체
         // - 여기서는 모델의 역할은 Request객체가 담당
