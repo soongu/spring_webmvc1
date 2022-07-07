@@ -24,7 +24,7 @@ public class InfoServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("hello info servlet!!");
+        System.out.println("info 요청이 들어옴!!");
 
 //        System.out.println("connected IP address: " + req.getRemoteAddr());
 //        System.out.println("hobby: " + req.getParameter("hobby"));
