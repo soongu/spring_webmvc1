@@ -1,12 +1,11 @@
-package com.spring.webmvc.chap04.v3;
+package com.spring.webmvc.chap04.v4;
 
 
 import com.spring.webmvc.chap04.ModelAndView;
-import com.spring.webmvc.chap04.View;
-import com.spring.webmvc.chap04.v3.controller.ControllerV3;
-import com.spring.webmvc.chap04.v3.controller.FormController;
-import com.spring.webmvc.chap04.v3.controller.SaveController;
-import com.spring.webmvc.chap04.v3.controller.ShowController;
+import com.spring.webmvc.chap04.v4.controller.ControllerV4;
+import com.spring.webmvc.chap04.v4.controller.FormController;
+import com.spring.webmvc.chap04.v4.controller.SaveController;
+import com.spring.webmvc.chap04.v4.controller.ShowController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,18 +17,18 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-// /mvc/v3으로 시작하는 모든 요청을 다 처리한다.
-@WebServlet("/mvc/v3/*")
-public class FrontControllerV3 extends HttpServlet {
+// /mvc/v4으로 시작하는 모든 요청을 다 처리한다.
+@WebServlet("/mvc/v4/*")
+public class FrontControllerV4 extends HttpServlet {
 
 
-    private final Map<String, ControllerV3> controllerMap
+    private final Map<String, ControllerV4> controllerMap
                                             = new HashMap<>();
 
-    public FrontControllerV3() {
-        controllerMap.put("/mvc/v3/join", new FormController());
-        controllerMap.put("/mvc/v3/save", new SaveController());
-        controllerMap.put("/mvc/v3/show", new ShowController());
+    public FrontControllerV4() {
+        controllerMap.put("/mvc/v4/join", new FormController());
+        controllerMap.put("/mvc/v4/save", new SaveController());
+        controllerMap.put("/mvc/v4/show", new ShowController());
     }
 
     @Override
@@ -41,7 +40,7 @@ public class FrontControllerV3 extends HttpServlet {
         String uri = req.getRequestURI();
 
         // 컨트롤러맵에서 방금 들어온 요청에 따른 적합한 컨트롤러를 꺼내옴
-        ControllerV3 controller = controllerMap.get(uri);
+        ControllerV4 controller = controllerMap.get(uri);
 
         if (controller == null) {
             resp.setStatus(404); // 404 : page not found
@@ -52,7 +51,8 @@ public class FrontControllerV3 extends HttpServlet {
         // key: 파라미터의 key, value: 파라미터의 value
         Map<String, String> paramMap = createParamMap(req);
 
-        ModelAndView mv = controller.process(paramMap);
+        String viewName = controller.process(paramMap);
+        ModelAndView mv = new ModelAndView(viewName);
 
         // 모델데이터를 jsp로 전송
         modelToView(req, mv);

@@ -1,5 +1,6 @@
 package com.spring.webmvc.chap04.v3.controller;
 
+import com.spring.webmvc.chap04.ModelAndView;
 import com.spring.webmvc.chap04.View;
 import com.spring.webmvc.member.model.Member;
 import com.spring.webmvc.member.repository.MemberRepository;
@@ -13,7 +14,7 @@ public class SaveController implements ControllerV3 {
             = MemoryMemberRepo.getInstance();
 
     @Override
-    public View process(Map<String, String> paramMap) {
+    public ModelAndView process(Map<String, String> paramMap) {
         String account = paramMap.get("account");
         String password = paramMap.get("password");
         String userName = paramMap.get("userName");
@@ -23,6 +24,6 @@ public class SaveController implements ControllerV3 {
 
         // response.sendRedirect("/");
 
-        return new View("redirect:/");
+        return new ModelAndView("redirect:/");
     }
 }
