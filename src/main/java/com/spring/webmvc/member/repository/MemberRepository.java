@@ -11,4 +11,7 @@ public interface MemberRepository {
 
     // 전체 회원 조회 기능
     List<Member> findAll();
+
+    // 회원 상세 조회 기능
+    Member findOne(int userNum);
 }

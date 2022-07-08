@@ -1,11 +1,9 @@
 package com.spring.webmvc.chap04.v4;
 
 
+import com.spring.webmvc.chap04.Model;
 import com.spring.webmvc.chap04.ModelAndView;
-import com.spring.webmvc.chap04.v4.controller.ControllerV4;
-import com.spring.webmvc.chap04.v4.controller.FormController;
-import com.spring.webmvc.chap04.v4.controller.SaveController;
-import com.spring.webmvc.chap04.v4.controller.ShowController;
+import com.spring.webmvc.chap04.v4.controller.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +27,7 @@ public class FrontControllerV4 extends HttpServlet {
         controllerMap.put("/mvc/v4/join", new FormController());
         controllerMap.put("/mvc/v4/save", new SaveController());
         controllerMap.put("/mvc/v4/show", new ShowController());
+        controllerMap.put("/mvc/v4/member", new FindOneController());
     }
 
     @Override
@@ -51,8 +50,10 @@ public class FrontControllerV4 extends HttpServlet {
         // key: 파라미터의 key, value: 파라미터의 value
         Map<String, String> paramMap = createParamMap(req);
 
-        String viewName = controller.process(paramMap);
+        Model model = new Model(); // 모델객체 생성해서 하위 컨트롤러에게 전달
+        String viewName = controller.process(paramMap, model);
         ModelAndView mv = new ModelAndView(viewName);
+        mv.setModel(model); // 모델앤뷰 객체에 데이터 모델 저장.
 
         // 모델데이터를 jsp로 전송
         modelToView(req, mv);
