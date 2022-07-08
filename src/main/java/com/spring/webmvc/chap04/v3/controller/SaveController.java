@@ -23,6 +23,6 @@ public class SaveController implements ControllerV3 {
 
         // response.sendRedirect("/");
 
-        return null;
+        return new View("redirect:/");
     }
 }

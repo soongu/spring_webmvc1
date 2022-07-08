@@ -8,6 +8,6 @@ public class FormController implements ControllerV3 {
 
     @Override
     public View process(Map<String, String> paramMap) {
-        return new View("/WEB-INF/views/reg_form.jsp");
+        return new View("reg_form");
     }
 }

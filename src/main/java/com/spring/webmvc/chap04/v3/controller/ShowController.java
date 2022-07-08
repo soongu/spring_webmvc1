@@ -16,6 +16,6 @@ public class ShowController implements ControllerV3 {
     public View process(Map<String, String> paramMap) {
         List<Member> members = repository.findAll();
         // request.setAttribute("mList", members);
-        return new View("/WEB-INF/views/members.jsp");
+        return new View("members");
     }
 }

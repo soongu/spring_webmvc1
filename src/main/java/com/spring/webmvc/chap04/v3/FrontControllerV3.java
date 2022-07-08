@@ -2,11 +2,10 @@ package com.spring.webmvc.chap04.v3;
 
 
 import com.spring.webmvc.chap04.View;
-import com.spring.webmvc.chap04.v2.controller.ControllerV2;
-import com.spring.webmvc.chap04.v2.controller.FormController;
-import com.spring.webmvc.chap04.v2.controller.SaveController;
-import com.spring.webmvc.chap04.v2.controller.ShowController;
 import com.spring.webmvc.chap04.v3.controller.ControllerV3;
+import com.spring.webmvc.chap04.v3.controller.FormController;
+import com.spring.webmvc.chap04.v3.controller.SaveController;
+import com.spring.webmvc.chap04.v3.controller.ShowController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,9 +26,9 @@ public class FrontControllerV3 extends HttpServlet {
                                             = new HashMap<>();
 
     public FrontControllerV3() {
-//        controllerMap.put("/mvc/v3/join", new FormController());
-//        controllerMap.put("/mvc/v3/save", new SaveController());
-//        controllerMap.put("/mvc/v3/show", new ShowController());
+        controllerMap.put("/mvc/v3/join", new FormController());
+        controllerMap.put("/mvc/v3/save", new SaveController());
+        controllerMap.put("/mvc/v3/show", new ShowController());
     }
 
     @Override
@@ -53,7 +52,7 @@ public class FrontControllerV3 extends HttpServlet {
         Map<String, String> paramMap = createParamMap(req);
 
         View view = controller.process(paramMap);
-        if (view != null) view.render(req, resp);
+        view.render(req, resp);
 
     }
 
