@@ -28,6 +28,7 @@ public class FrontControllerV4 extends HttpServlet {
         controllerMap.put("/mvc/v4/save", new SaveController());
         controllerMap.put("/mvc/v4/show", new ShowController());
         controllerMap.put("/mvc/v4/member", new FindOneController());
+        controllerMap.put("/mvc/v4/remove", new RemoveController());
     }
 
     @Override

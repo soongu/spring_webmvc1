@@ -14,4 +14,7 @@ public interface MemberRepository {
 
     // 회원 상세 조회 기능
     Member findOne(int userNum);
+
+    // 회원 삭제 기능
+    void remove(int userNum);
 }
