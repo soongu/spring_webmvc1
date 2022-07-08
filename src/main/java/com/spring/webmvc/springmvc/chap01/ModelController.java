@@ -2,18 +2,28 @@ package com.spring.webmvc.springmvc.chap01;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/model")
 public class ModelController {
+
+    private static class ModelURL {
+        public static final String HOBBIES = "/hobbies";
+        public static final String HOBBIES2 = "/hobbies2";
+        public static final String FORM = "/form";
+        public static final String CHECK = "/age-check";
+    }
 
     //======= JSP파일로 포워딩할 때 데이터 전달하기======//
     //== 1. Model 객체 사용하기
-    @RequestMapping("/model/hobbies")
+    @RequestMapping(ModelURL.HOBBIES)
     public String hobbies(Model model) {
 
         List<String> hList = new ArrayList<>();
@@ -30,7 +40,7 @@ public class ModelController {
     }
 
     //== 2. ModelAndView 사용하기
-    @RequestMapping("/model/hobbies2")
+    @RequestMapping(ModelURL.HOBBIES2)
     public ModelAndView hobbies2() {
         List<String> hList = new ArrayList<>();
         hList.add("영화보기");
@@ -42,4 +52,25 @@ public class ModelController {
 
         return mv;
     }
+
+    // age-form 띄우기
+    @RequestMapping(ModelURL.FORM)
+    public String form() {
+        return "chap01/age-form";
+    }
+
+    //==3. @ModelAttribute 사용
+
+    // age데이터 처리
+    @RequestMapping(ModelURL.CHECK)
+    public String check(@ModelAttribute("age") int age, Model model) {
+        // 나이로 출생년도 구해주기 (한국나이)
+        int birthYear = LocalDate.now().getYear() - age + 1;
+
+        model.addAttribute("bYear", birthYear);
+//        model.addAttribute("age", age);
+
+        return "chap01/age-result";
+    }
+
 }
