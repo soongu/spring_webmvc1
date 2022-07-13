@@ -4,14 +4,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.log4j.Log4j2;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static com.spring.webmvc.springmvc.chap02.domain.Grade.*;
 
-@Setter @Getter @ToString
-@NoArgsConstructor
+ @Getter @ToString
+@Log4j2
 public class Score {
 
     // 클라이언트가 전달할 데이터
@@ -23,6 +24,10 @@ public class Score {
     private int total; // 총점
     private double average; // 평균
     private Grade grade; // 학점
+
+    public Score() {
+        log.info("Score 기본 생성자 호출!!!");
+    }
 
     public Score(String name, int kor, int eng, int math) {
         this.name = name;
@@ -46,12 +51,12 @@ public class Score {
 
 
     // 총점 평균 계산
-    private void calcTotalAndAvg() {
+    public void calcTotalAndAvg() {
         this.total = kor + eng + math;
         this.average = total / 3.0;
     }
     // 학점 계산
-    private void calcGrade() {
+    public void calcGrade() {
         if (this.average >= 90) {
             this.grade = A;
         } else if (this.average >= 80) {
@@ -65,4 +70,39 @@ public class Score {
         }
     }
 
-}
+     public void setName(String name) {
+        log.info("setName호출");
+         this.name = name;
+     }
+
+     public void setKor(int kor) {
+         log.info("setKor호출");
+         this.kor = kor;
+     }
+
+     public void setEng(int eng) {
+         log.info("setEng호출");
+         this.eng = eng;
+     }
+
+     public void setMath(int math) {
+         log.info("setMath호출");
+         this.math = math;
+     }
+
+     public void setStuNum(int stuNum) {
+         this.stuNum = stuNum;
+     }
+
+     public void setTotal(int total) {
+         this.total = total;
+     }
+
+     public void setAverage(double average) {
+         this.average = average;
+     }
+
+     public void setGrade(Grade grade) {
+         this.grade = grade;
+     }
+ }
