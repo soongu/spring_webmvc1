@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Repository
+//@Repository
 public class MemoryMemberRepo implements MemberRepository {
 
     // 회원 정보를 저장할 메모리 저장소

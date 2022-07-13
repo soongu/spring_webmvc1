@@ -64,6 +64,7 @@ public class ModelController {
     // age데이터 처리
     @RequestMapping(ModelURL.CHECK)
     public String check(@ModelAttribute("age") int age, Model model) {
+
         // 나이로 출생년도 구해주기 (한국나이)
         int birthYear = LocalDate.now().getYear() - age + 1;
 
