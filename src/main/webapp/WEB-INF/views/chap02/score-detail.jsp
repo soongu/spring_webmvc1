@@ -58,8 +58,6 @@
 <body>
 
     <div class="wrap">
-
-
         <section class="score-main">
             <h1>${s.name}님 성적 정보</h1>
             <ul>

@@ -26,7 +26,7 @@ public class Score {
     private Grade grade; // 학점
 
     public Score() {
-        log.info("Score 기본 생성자 호출!!!");
+        log.trace("Score 기본 생성자 호출!!!");
     }
 
     public Score(String name, int kor, int eng, int math) {
@@ -71,22 +71,22 @@ public class Score {
     }
 
      public void setName(String name) {
-        log.info("setName호출");
+        log.trace("setName호출");
          this.name = name;
      }
 
      public void setKor(int kor) {
-         log.info("setKor호출");
+         log.trace("setKor호출");
          this.kor = kor;
      }
 
      public void setEng(int eng) {
-         log.info("setEng호출");
+         log.trace("setEng호출");
          this.eng = eng;
      }
 
      public void setMath(int math) {
-         log.info("setMath호출");
+         log.trace("setMath호출");
          this.math = math;
      }
 

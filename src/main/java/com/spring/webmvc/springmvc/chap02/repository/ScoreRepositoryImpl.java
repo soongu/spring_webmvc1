@@ -28,8 +28,21 @@ public class ScoreRepositoryImpl implements ScoreRepository {
     }
 
     @Override
-    public List<Score> findAll() {
-        String sql = "SELECT * FROM tbl_score";
+    public List<Score> findAll(String sort) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM tbl_score");
+
+        switch (sort) {
+            case "num":
+                sql.append(" ORDER BY stu_num");
+                break;
+            case "name":
+                sql.append(" ORDER BY stu_name");
+                break;
+            case "average":
+                sql.append(" ORDER BY average DESC");
+                break;
+        }
+
         // SELECT문의 경우는 query()
 //        return template.query(sql, new ScoreRowMapper());
 
@@ -41,7 +54,7 @@ public class ScoreRepositoryImpl implements ScoreRepository {
             }
         });
          */
-        return template.query(sql, (rs, rowNum) -> new Score(rs));
+        return template.query(sql.toString(), (rs, rowNum) -> new Score(rs));
     }
 
     @Override
