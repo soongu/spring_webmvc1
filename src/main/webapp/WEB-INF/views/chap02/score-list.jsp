@@ -57,6 +57,21 @@
             padding: 200px 50px 100px;
             font-size: 1.5em;
         }
+
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+
+            width: 50%;
+        }
+        .list-header .sort-link-group {
+            display: flex;
+
+        }
+        .list-header .sort-link-group div {
+            margin-right: 20px;
+        }
+
     </style>
 </head>
 
@@ -88,7 +103,15 @@
             <hr>
 
             <ul class="score-list">
-                <li>총 학생 수: ${scores.size()}명</li>
+                <li class="list-header">
+                    <div class="count">총 학생 수: ${scores.size()}명</div>
+                    <div class="sort-link-group">
+                        <div><a href="/score/list?sort=num">학번순</a></div>
+                        <div><a href="/score/list?sort=name">이름순</a></div>
+                        <div><a href="/score/list?sort=average">평균순</a></div>
+                    </div>
+
+                </li>
 
                 <c:forEach var="s" items="${scores}">
                     <li>
