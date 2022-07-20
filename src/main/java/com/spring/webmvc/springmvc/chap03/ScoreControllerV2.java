@@ -22,7 +22,7 @@ public class ScoreControllerV2 {
 
 
     // 점수 등록 및 조회 화면 열기 요청
-    @RequestMapping("/score/list")
+    @RequestMapping("/score2/list")
     public String list(
             @RequestParam(defaultValue = "num") String sort
             , Model model) {
@@ -35,7 +35,7 @@ public class ScoreControllerV2 {
     }
 
     // 점수 신규 등록 요청
-    @RequestMapping("/score/register")
+    @RequestMapping("/score2/register")
     public String register(Score score) {
         log.info("/score/register POST! - " + score);
 
@@ -43,14 +43,14 @@ public class ScoreControllerV2 {
     }
 
     // 점수 삭제 요청
-    @RequestMapping("/score/delete")
+    @RequestMapping("/score2/delete")
     public String delete(@RequestParam("stuNum") int sn) {
         log.info("/score/delete GET - param1: {}", sn);
         return service.deleteService(sn) ? "redirect:/score/list" : "redirect:/";
     }
 
     // 점수 상세 조회 요청
-    @RequestMapping("/score/detail")
+    @RequestMapping("/score2/detail")
     public ModelAndView detail(int stuNum) {
         log.info("/score/detail GET - param1: {}", stuNum);
         Score score = service.detailService(stuNum);

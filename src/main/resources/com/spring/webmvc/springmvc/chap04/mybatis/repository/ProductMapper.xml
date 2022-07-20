@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper태그는 sql을 매핑할때 사용하는 태그
+     namespace속성에는 사용할 인터페이스의 풀 패키지경로 + 인터페이스이름
+  -->
+<mapper namespace="com.spring.webmvc.springmvc.chap04.mybatis.repository.ProductMapper">
+
+    <!-- 제품 등록 SQL 작성 :  id속성에는 추상메서드 이름  -->
+    <insert id="save">
+        INSERT INTO tbl_product
+            (serial_no, product_name, price)
+        VALUES (TO_CHAR(SYSDATE, 'YYYYMMDD')
+        || LPAD(seq_product.nextval, 4, '0'),
+        #{productName}, #{price})
+    </insert>
+
+    <!-- 제품 정보 삭제  -->
+    <delete id="remove">
+        DELETE FROM tbl_product
+        WHERE serial_no = #{serialNo}
+    </delete>
+
+    <!--  제품 정보 수정  -->
+    <update id="modify">
+        UPDATE tbl_product
+        SET product_name = #{productName}, price = #{price}
+        WHERE serial_no = #{serialNo}
+    </update>
+
+    <!--
+        * 단일 컬럼 조회 시에는 resultType속성으로 데이터 타입을 명시
+        * 다중 컬럼 조회 시에는 resultMap속성으로 데이터를 객체 처리
+      -->
+
+    <!--  resultMap 설정: DB컬럼과 자바클래스 필드명의 차이를 지정  -->
+    <!--  id속성은 식별자를 자유롭게 지정 type속성에는 도메인클래스 명  -->
+    <resultMap id="productMap" type="com.spring.webmvc.springmvc.chap04.mybatis.domain.Product">
+
+        <!--  property속성에는 자바 필드명, column속성에는 db컬럼명      -->
+        <result property="serialNo" column="serial_no" />
+        <result property="productName" column="product_name" />
+        <result property="madeAt" column="made_at" />
+    </resultMap>
+
+    <!--  제품 전체 조회  -->
+    <select id="findAll" resultMap="productMap">
+        SELECT * FROM tbl_product
+        ORDER BY price DESC
+    </select>
+
+    <!--  제품 개별 조회  -->
+    <select id="findOne" resultMap="productMap">
+        SELECT * FROM tbl_product
+        WHERE serial_no = #{serialNo}
+    </select>
+
+</mapper>

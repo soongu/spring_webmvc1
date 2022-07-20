@@ -34,6 +34,9 @@ dependencies {
 	//spring jdbc 라이브러리
 	implementation "org.springframework.boot:spring-boot-starter-jdbc"
 
+	//마이바티스 라이브러리
+	implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0"
+
 }
 
 tasks.named('test') {
