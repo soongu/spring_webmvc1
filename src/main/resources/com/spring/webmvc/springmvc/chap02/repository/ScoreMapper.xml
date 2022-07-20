@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.webmvc.springmvc.chap02.repository.ScoreMapper">
+
+    <insert id="save">
+        INSERT INTO tbl_score
+
+        VALUES (seq_tbl_score.nextval,
+            #{name},#{kor},#{eng},#{math}
+            ,#{total},#{average},#{grade})
+    </insert>
+
+    <delete id="remove">
+        DELETE FROM tbl_score WHERE stu_num=#{stuNum}
+    </delete>
+
+    <resultMap id="scoreMap" type="com.spring.webmvc.springmvc.chap02.domain.Score">
+        <result column="stu_num" property="stuNum" />
+        <result column="stu_name" property="name" />
+    </resultMap>
+
+
+    <!--  동적 SQL 작성법  -->
+    <select id="findAll" resultMap="scoreMap">
+        SELECT * FROM tbl_score
+        <if test="sort == 'num'">
+            ORDER BY stu_num
+        </if>
+        <if test="sort == 'name'">
+            ORDER BY stu_name
+        </if>
+        <if test="sort == 'average'">
+            ORDER BY average DESC
+        </if>
+    </select>
+
+    <select id="findOne" resultMap="scoreMap">
+        SELECT * FROM tbl_score
+        WHERE stu_num=#{stuNum}
+    </select>
+
+
+
+
+
+</mapper>

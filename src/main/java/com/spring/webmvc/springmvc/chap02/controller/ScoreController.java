@@ -1,6 +1,7 @@
 package com.spring.webmvc.springmvc.chap02.controller;
 
 import com.spring.webmvc.springmvc.chap02.domain.Score;
+import com.spring.webmvc.springmvc.chap02.repository.ScoreMapper;
 import com.spring.webmvc.springmvc.chap02.repository.ScoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -17,7 +18,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ScoreController {
 
-    private final ScoreRepository repository;
+//    private final ScoreRepository repository;
+    private final ScoreMapper repository;
 
 
     // 점수 등록 및 조회 화면 열기 요청

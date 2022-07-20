@@ -5,9 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-// 학생의 성적정보를 저장, 조회, 수정, 삭제하는 저장소 역할
-
-public interface ScoreRepository {
+@Mapper
+public interface ScoreMapper {
 
     // 점수 저장
     boolean save(Score score);
